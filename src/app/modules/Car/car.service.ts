@@ -24,7 +24,7 @@ const getSingleCars = async (id: string) => {
   const result = await Car.findById(id);
 
   if (!result) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Offered Course not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
   }
 
   return result;
@@ -34,7 +34,7 @@ const updateCar = async (id: string, payload: Partial<TCar>) => {
   const isCarExists = await Car.findById(id);
 
   if (!isCarExists) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Offered Course not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
   }
 
   const result = await Car.findByIdAndUpdate(id, payload, {
@@ -48,7 +48,7 @@ const deleteCar = async (id: string) => {
   const isCarExists = await Car.findById(id);
 
   if (!isCarExists) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Offered Course not found');
+    throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
   }
 
   const result = await Car.findByIdAndUpdate(id, { isDeleted: true });
