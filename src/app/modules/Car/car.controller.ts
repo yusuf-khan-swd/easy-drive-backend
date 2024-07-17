@@ -22,7 +22,7 @@ const getAllCars = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Cars are retrieved successfully',
+    message: 'Cars retrieved successfully',
     data: result,
   });
 });
@@ -34,7 +34,7 @@ const getSingleCar = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Car is retrieved successfully',
+    message: 'A Car retrieved successfully',
     data: result,
   });
 });
@@ -58,7 +58,7 @@ const deleteCar = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Car deleted successfully',
+    message: 'Car Deleted successfully',
     data: result,
   });
 });
