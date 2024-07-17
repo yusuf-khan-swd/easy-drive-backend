@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../errors/AppError';
-import { TBooking } from './booking.interface';
+import { TBooking, TReturnCar } from './booking.interface';
 import { Booking } from './booking.model';
 
 const createBooking = async (payload: TBooking) => {
@@ -30,16 +30,22 @@ const getSingleBookings = async (id: string) => {
   return result;
 };
 
-const updateBooking = async (id: string, payload: Partial<TBooking>) => {
-  const isBookingExists = await Booking.findById(id);
+const returnCar = async (payload: TReturnCar) => {
+  const { bookingId, endTime } = payload;
+
+  const isBookingExists = await Booking.findById({ _id: bookingId });
 
   if (!isBookingExists) {
     throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
   }
 
-  const result = await Booking.findByIdAndUpdate(id, payload, {
-    new: true,
-  });
+  const result = await Booking.findByIdAndUpdate(
+    { _id: bookingId },
+    { endTime },
+    {
+      new: true,
+    },
+  );
 
   return result;
 };
@@ -60,6 +66,6 @@ export const BookingService = {
   createBooking,
   getAllBooking,
   getSingleBookings,
-  updateBooking,
+  returnCar,
   deleteBooking,
 };
