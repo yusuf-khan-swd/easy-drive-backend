@@ -23,6 +23,7 @@ const bookingSchema = new Schema<TBooking>(
     },
     endTime: {
       type: String,
+      default: null,
     },
     totalCost: {
       type: Number,
