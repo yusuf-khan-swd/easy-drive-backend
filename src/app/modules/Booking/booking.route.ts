@@ -13,14 +13,14 @@ router.post(
 
 router.get('/', BookingController.getAllBookings);
 
-router.get('/:id', BookingController.getSingleBooking);
-
 router.get('/my-bookings');
 
+router.get('/:id', BookingController.getSingleBooking);
+
 router.put(
-  '/return',
+  '/cars/return',
   validateRequest(BookingValidation.returnCarValidationSchema),
-  BookingController.updateBooking,
+  BookingController.returnCar,
 );
 
 router.delete('/:id', BookingController.deleteBooking);
