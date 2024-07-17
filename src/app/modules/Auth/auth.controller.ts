@@ -21,11 +21,6 @@ const loginUser = catchAsync(async (req, res) => {
   const result = await AuthService.loginUser(data);
   const { user, accessToken } = result;
 
-  // res.cookie('refreshToken', refreshToken, {
-  //   secure: config.NODE_ENV === 'production',
-  //   httpOnly: true,
-  // });
-
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
