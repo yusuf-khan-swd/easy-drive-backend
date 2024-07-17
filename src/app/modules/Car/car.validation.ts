@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 // TODO: Check status and isDeleted validation because of default value. And other default value validation
 
-const carValidationSchema = z.object({
+const createCarValidationSchema = z.object({
   body: z.object({
     name: z.string({ required_error: 'Name is required' }),
     description: z.string({ required_error: 'Description is required' }),
@@ -12,14 +12,24 @@ const carValidationSchema = z.object({
     features: z.array(z.string({ required_error: 'Features are required' })),
     pricePerHour: z.number().min(0, 'Price per hour must be a positive number'),
     // isDeleted: z.boolean().default(false),
+  }),
+});
 
-    email: z.string().email(),
-    password: z.string().min(8, 'Password must be at least 8 characters long'),
-    phone: z.string({ required_error: 'Phone number is required' }),
-    address: z.string({ required_error: 'Address is required' }),
+const updateCarValidationSchema = z.object({
+  body: z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    color: z.string().optional(),
+    isElectric: z.boolean().optional(),
+    features: z.array(z.string()).optional(),
+    pricePerHour: z
+      .number()
+      .min(0, 'Price per hour must be a positive number')
+      .optional(),
   }),
 });
 
 export const CarValidation = {
-  carValidationSchema,
+  createCarValidationSchema,
+  updateCarValidationSchema,
 };
