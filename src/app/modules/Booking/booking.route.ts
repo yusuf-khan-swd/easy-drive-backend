@@ -15,6 +15,4 @@ router.get('/', BookingController.getAllBookings);
 
 router.get('/my-bookings', BookingController.myBooking);
 
-router.get('/:id', BookingController.getSingleBooking);
-
 export const BookingRoutes = router;

@@ -20,16 +20,6 @@ const getAllBooking = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const getSingleBookings = async (id: string) => {
-  const result = await Booking.findById(id);
-
-  if (!result) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
-  }
-
-  return result;
-};
-
 const myBooking = async (id: string) => {
   const isBookingExists = await Booking.findById(id);
 
@@ -45,7 +35,5 @@ const myBooking = async (id: string) => {
 export const BookingService = {
   createBooking,
   getAllBooking,
-  getSingleBookings,
-
   myBooking,
 };
