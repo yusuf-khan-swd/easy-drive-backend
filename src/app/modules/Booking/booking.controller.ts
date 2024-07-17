@@ -34,7 +34,7 @@ const myBooking = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Booking Myd successfully',
+    message: 'My Bookings retrieved successfully',
     data: result,
   });
 });
