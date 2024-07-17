@@ -35,4 +35,4 @@ const bookingSchema = new Schema<TBooking>(
   },
 );
 
-export const Card = model<TBooking>('Car', bookingSchema);
+export const Booking = model<TBooking>('Booking', bookingSchema);
