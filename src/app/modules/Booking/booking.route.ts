@@ -15,8 +15,10 @@ router.get('/', BookingController.getAllBookings);
 
 router.get('/:id', BookingController.getSingleBooking);
 
+router.get('/my-bookings');
+
 router.put(
-  '/:id',
+  '/return',
   validateRequest(BookingValidation.returnCarValidationSchema),
   BookingController.updateBooking,
 );
