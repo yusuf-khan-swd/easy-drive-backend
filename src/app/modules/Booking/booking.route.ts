@@ -1,11 +1,13 @@
 import express from 'express';
+import validateRequest from '../../middlewares/validateRequest';
 import { BookingController } from './booking.controller';
+import { BookingValidation } from './booking.validation';
 
 const router = express.Router();
 
 router.post(
   '/',
-  // validateRequest(BookingValidation.createBookingValidationSchema),
+  validateRequest(BookingValidation.bookingValidationSchema),
   BookingController.createBooking,
 );
 
@@ -15,7 +17,7 @@ router.get('/:id', BookingController.getSingleBooking);
 
 router.put(
   '/:id',
-  // validateRequest(BookingValidation.updateBookingValidationSchema),
+  validateRequest(BookingValidation.returnCarValidationSchema),
   BookingController.updateBooking,
 );
 
