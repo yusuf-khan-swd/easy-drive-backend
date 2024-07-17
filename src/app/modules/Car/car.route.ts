@@ -1,6 +1,5 @@
 import express from 'express';
 import validateRequest from '../../middlewares/validateRequest';
-import { BookingValidation } from '../Booking/booking.validation';
 import { CarController } from './car.controller';
 import { CarValidation } from './car.validation';
 
@@ -27,7 +26,7 @@ router.delete('/:id', CarController.deleteCar);
 // TODO: I think I have to move this route to before dynamic put route
 router.put(
   '/cars/return',
-  validateRequest(BookingValidation.returnCarValidationSchema),
+  validateRequest(CarValidation.returnCarValidationSchema),
   CarController.returnCar,
 );
 

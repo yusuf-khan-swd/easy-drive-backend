@@ -1,9 +1,8 @@
 import httpStatus from 'http-status';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../errors/AppError';
-import { TReturnCar } from '../Booking/booking.interface';
 import { Booking } from '../Booking/booking.model';
-import { TCar } from './car.interface';
+import { TCar, TReturnCar } from './car.interface';
 import { Car } from './car.model';
 
 const createCar = async (payload: TCar) => {

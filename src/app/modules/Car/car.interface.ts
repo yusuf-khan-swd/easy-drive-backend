@@ -8,3 +8,8 @@ export type TCar = {
   pricePerHour: number;
   isDeleted?: boolean;
 };
+
+export type TReturnCar = {
+  bookingId: string;
+  endTime: string;
+};
