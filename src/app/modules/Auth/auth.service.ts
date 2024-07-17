@@ -3,9 +3,15 @@ import httpStatus from 'http-status';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import config from '../../config';
 import AppError from '../../errors/AppError';
+import { TUser } from '../User/user.interface';
 import { User } from '../User/user.model';
 import { TLoginUser } from './auth.interface';
 import { createToken } from './auth.utils';
+
+const signUp = async (payload: TUser) => {
+  const result = await User.create(payload);
+  return result;
+};
 
 const loginUser = async (payload: TLoginUser) => {
   const user = await User.isUserExistByEmail(payload.email);
@@ -96,6 +102,7 @@ const changePassword = async (
 };
 
 export const AuthService = {
+  signUp,
   loginUser,
   changePassword,
   refreshToken,
