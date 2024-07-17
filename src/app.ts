@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(cors());
 
 // Application route
-app.use('/api/v1', router);
+app.use('/api', router);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
