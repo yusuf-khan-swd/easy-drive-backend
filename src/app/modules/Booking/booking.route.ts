@@ -13,10 +13,8 @@ router.post(
 
 router.get('/', BookingController.getAllBookings);
 
-router.get('/my-bookings');
+router.get('/my-bookings', BookingController.myBooking);
 
 router.get('/:id', BookingController.getSingleBooking);
-
-router.delete('/:id', BookingController.deleteBooking);
 
 export const BookingRoutes = router;

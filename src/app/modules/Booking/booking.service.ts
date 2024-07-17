@@ -30,7 +30,7 @@ const getSingleBookings = async (id: string) => {
   return result;
 };
 
-const deleteBooking = async (id: string) => {
+const myBooking = async (id: string) => {
   const isBookingExists = await Booking.findById(id);
 
   if (!isBookingExists) {
@@ -47,5 +47,5 @@ export const BookingService = {
   getAllBooking,
   getSingleBookings,
 
-  deleteBooking,
+  myBooking,
 };

@@ -39,14 +39,14 @@ const getSingleBooking = catchAsync(async (req, res) => {
   });
 });
 
-const deleteBooking = catchAsync(async (req, res) => {
+const myBooking = catchAsync(async (req, res) => {
   const { id } = req.params;
-  const result = await BookingService.deleteBooking(id);
+  const result = await BookingService.myBooking(id);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Booking Deleted successfully',
+    message: 'Booking Myd successfully',
     data: result,
   });
 });
@@ -55,5 +55,5 @@ export const BookingController = {
   createBooking,
   getAllBookings,
   getSingleBooking,
-  deleteBooking,
+  myBooking,
 };
