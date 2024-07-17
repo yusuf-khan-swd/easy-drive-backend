@@ -21,35 +21,13 @@ const auth = (...requiredRoles: TUserRole[]) => {
       config.jwt_access_secret as string,
     ) as JwtPayload;
 
-    const { role, userId, iat } = decoded;
+    const { role, userEmail } = decoded;
 
-    const user = await User.isUserExistsByCustomId(userId);
+    const user = await User.isUserExistByEmail(userEmail);
 
     if (!user) {
       throw new AppError(httpStatus.NOT_FOUND, 'User Not found !');
     }
-
-    const isDeleted = user?.isDeleted;
-
-    if (isDeleted)
-      throw new AppError(httpStatus.FORBIDDEN, 'This User is Deleted !');
-
-    const userStatus = user?.status === 'blocked';
-
-    if (userStatus)
-      throw new AppError(httpStatus.FORBIDDEN, 'This User is Blocked !');
-
-    if (
-      user.passwordChangedAt &&
-      User.isJWTIssuedBeforePasswordChanged(
-        user.passwordChangedAt,
-        iat as number,
-      )
-    )
-      throw new AppError(
-        httpStatus.UNAUTHORIZED,
-        'You are not authorized! Old Token, That issued before Password Change',
-      );
 
     if (requiredRoles && !requiredRoles.includes(role))
       throw new AppError(
