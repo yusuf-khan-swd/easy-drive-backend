@@ -39,14 +39,13 @@ const getSingleBooking = catchAsync(async (req, res) => {
   });
 });
 
-const updateBooking = catchAsync(async (req, res) => {
-  const { id } = req.params;
-  const result = await BookingService.updateBooking(id, req.body);
+const returnCar = catchAsync(async (req, res) => {
+  const result = await BookingService.returnCar(req.body);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Booking updated successfully',
+    message: 'Car returned successfully',
     data: result,
   });
 });
@@ -67,6 +66,6 @@ export const BookingController = {
   createBooking,
   getAllBookings,
   getSingleBooking,
-  updateBooking,
+  returnCar,
   deleteBooking,
 };
