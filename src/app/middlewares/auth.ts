@@ -13,7 +13,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     if (!token)
       throw new AppError(
         httpStatus.UNAUTHORIZED,
-        'You are not authorized! Token is Missing',
+        'You have no access to this route',
       );
 
     const decoded = jwt.verify(
@@ -32,7 +32,7 @@ const auth = (...requiredRoles: TUserRole[]) => {
     if (requiredRoles && !requiredRoles.includes(role))
       throw new AppError(
         httpStatus.UNAUTHORIZED,
-        'You are not authorized to access this route!',
+        'You have no access to this route',
       );
 
     req.user = decoded as JwtPayload;
