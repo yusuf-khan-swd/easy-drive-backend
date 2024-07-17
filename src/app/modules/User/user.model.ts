@@ -5,17 +5,37 @@ import { TUser, UserModel } from './user.interface';
 
 const userSchema = new Schema<TUser, UserModel>(
   {
-    id: { type: String, required: true, unique: true },
-    password: { type: String, required: true, select: 0 },
-    needsPasswordChange: { type: Boolean, default: true },
-    passwordChangedAt: { type: Date },
-    role: { type: String, enum: ['admin', 'student', 'faculty'] },
-    status: {
+    name: {
       type: String,
-      enum: ['in-progress', 'blocked'],
-      default: 'in-progress',
+      required: true,
+      trim: true,
     },
-    isDeleted: { type: Boolean, default: false },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
   },
   {
     timestamps: true,
