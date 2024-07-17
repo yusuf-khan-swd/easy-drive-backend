@@ -8,3 +8,9 @@ export type TBooking = {
   endTime: string;
   totalCost: number;
 };
+
+export type TUserBooking = {
+  carId: string;
+  date: string;
+  startTime: string;
+};
