@@ -1,0 +1,35 @@
+// npx eslint --init --format json => I need to add --format json Because, When I run this command there is not option for me to choose 'What format do you want to your config file to be in?'
+// Explain: When you run npx eslint --init, if it doesn't prompt you for the format of the config file, it typically means that ESLint has defaulted to creating a JavaScript format config file (eslintrc.js).
+//          This happens when ESLint doesn't detect any specific preferences or configurations in your current environment that would necessitate asking you for the format.
+// TODO: Well this also not work
+
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+
+  "rules": {
+    "no-unused-vars": "error",
+    "no-unused-expressions": "error",
+    "no-undef": "error",
+    "no-console": "warn",
+    "prefer-const": "error",
+    "@typescript-eslint/no-explicit-any": "warn"
+  },
+
+  "globals": { "process": "readonly" },
+
+  "env": {
+    "browser": true,
+    "es2021": true
+  }
+}
