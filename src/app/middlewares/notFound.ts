@@ -5,16 +5,12 @@ import httpStatus from 'http-status';
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
   const statusCode = httpStatus.NOT_FOUND;
-  const message = 'API Not Found!!';
+  const message = 'Not Found';
 
   return res.status(statusCode).json({
-    message,
     success: false,
-    error: [
-      {
-        path: req.originalUrl,
-      },
-    ],
+    statusCode,
+    message,
   });
 };
 
