@@ -1,6 +1,8 @@
 import httpStatus from 'http-status';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../errors/AppError';
+import { TReturnCar } from '../Booking/booking.interface';
+import { Booking } from '../Booking/booking.model';
 import { TCar } from './car.interface';
 import { Car } from './car.model';
 
@@ -56,10 +58,31 @@ const deleteCar = async (id: string) => {
   return result;
 };
 
+const returnCar = async (payload: TReturnCar) => {
+  const { bookingId, endTime } = payload;
+
+  const isBookingExists = await Booking.findById({ _id: bookingId });
+
+  if (!isBookingExists) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
+  }
+
+  const result = await Booking.findByIdAndUpdate(
+    { _id: bookingId },
+    { endTime },
+    {
+      new: true,
+    },
+  );
+
+  return result;
+};
+
 export const CarService = {
   createCar,
   getAllCar,
   getSingleCars,
   updateCar,
   deleteCar,
+  returnCar,
 };

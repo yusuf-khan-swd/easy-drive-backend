@@ -17,12 +17,6 @@ router.get('/my-bookings');
 
 router.get('/:id', BookingController.getSingleBooking);
 
-router.put(
-  '/cars/return',
-  validateRequest(BookingValidation.returnCarValidationSchema),
-  BookingController.returnCar,
-);
-
 router.delete('/:id', BookingController.deleteBooking);
 
 export const BookingRoutes = router;

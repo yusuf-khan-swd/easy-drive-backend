@@ -39,17 +39,6 @@ const getSingleBooking = catchAsync(async (req, res) => {
   });
 });
 
-const returnCar = catchAsync(async (req, res) => {
-  const result = await BookingService.returnCar(req.body);
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Car returned successfully',
-    data: result,
-  });
-});
-
 const deleteBooking = catchAsync(async (req, res) => {
   const { id } = req.params;
   const result = await BookingService.deleteBooking(id);
@@ -66,6 +55,5 @@ export const BookingController = {
   createBooking,
   getAllBookings,
   getSingleBooking,
-  returnCar,
   deleteBooking,
 };
