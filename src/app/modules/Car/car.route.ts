@@ -25,7 +25,7 @@ router.delete('/:id', CarController.deleteCar);
 
 // TODO: I think I have to move this route to before dynamic put route
 router.put(
-  '/cars/return',
+  '/return',
   validateRequest(CarValidation.returnCarValidationSchema),
   CarController.returnCar,
 );
