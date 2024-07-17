@@ -4,16 +4,11 @@ import { z } from 'zod';
 
 const bookingValidationSchema = z.object({
   body: z.object({
+    carId: z.string({ required_error: 'Car Id is required' }),
     date: z.string({ required_error: 'Date is required' }),
-    user: z.string({ required_error: 'User ID is required' }),
-    car: z.string({ required_error: 'Car ID is required' }),
     startTime: z
       .string()
       .regex(/^([01]\d|2[0-3]):?([0-5]\d)$/, 'Invalid start time format'),
-    endTime: z
-      .string()
-      .regex(/^([01]\d|2[0-3]):?([0-5]\d)$/, 'Invalid end time format'),
-    totalCost: z.number().default(0),
   }),
 });
 
@@ -23,7 +18,6 @@ const returnCarValidationSchema = z.object({
     endTime: z
       .string()
       .regex(/^([01]\d|2[0-3]):?([0-5]\d)$/, 'Invalid end time format'),
-    totalCost: z.number().default(0),
   }),
 });
 
