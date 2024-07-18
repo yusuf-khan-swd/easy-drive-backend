@@ -25,7 +25,7 @@ router.put(
   CarController.updateCar,
 );
 
-router.delete('/:id', CarController.deleteCar);
+router.delete('/:id', auth(USER_ROLE.admin), CarController.deleteCar);
 
 // TODO: I think I have to move this route to before dynamic put route
 router.put(
