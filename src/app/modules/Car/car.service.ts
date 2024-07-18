@@ -66,6 +66,10 @@ const returnCar = async (payload: TReturnCar) => {
     throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
   }
 
+  const isCarExist = await Car.findById(isBookingExists.car);
+
+  if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
+
   const result = await Booking.findByIdAndUpdate(
     { _id: bookingId },
     { endTime },
