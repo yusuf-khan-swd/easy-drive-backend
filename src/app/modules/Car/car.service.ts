@@ -73,6 +73,14 @@ const returnCar = async (payload: TReturnCar) => {
 
   await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
 
+  // TODO: calculate totalCost
+
+  const startTime = isBookingExists.startTime;
+  // endTime from payload;
+  const pricePerHour = isCarExist.pricePerHour;
+
+  console.log({ startTime, endTime, pricePerHour });
+
   const result = await Booking.findByIdAndUpdate(
     { _id: bookingId },
     { endTime },
