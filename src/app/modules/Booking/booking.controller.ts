@@ -41,12 +41,21 @@ const myBooking = catchAsync(async (req, res) => {
   const user = req.user;
   const result = await BookingService.myBooking(user);
 
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'My Bookings retrieved successfully',
-    data: result,
-  });
+  if (result.length > 0) {
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'My Bookings retrieved successfully',
+      data: result,
+    });
+  } else {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: true,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
 });
 
 export const BookingController = {
