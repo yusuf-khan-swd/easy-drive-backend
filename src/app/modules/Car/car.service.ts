@@ -73,17 +73,28 @@ const returnCar = async (payload: TReturnCar) => {
 
   await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
 
-  // TODO: calculate totalCost
-
   const startTime = isBookingExists.startTime;
-  // endTime from payload;
   const pricePerHour = isCarExist.pricePerHour;
 
-  console.log({ startTime, endTime, pricePerHour });
+  const startTimeSplit = startTime.split(':');
+  const endTimeSplit = endTime.split(':');
+
+  const startHours = parseInt(startTimeSplit[0]);
+  const startMinutes = parseInt(startTimeSplit[1]);
+  const endHours = parseInt(endTimeSplit[0]);
+  const endMinutes = parseInt(endTimeSplit[1]);
+
+  const startTotalMinutes = startHours * 60 + startMinutes;
+  const endTotalMinutes = endHours * 60 + endMinutes;
+
+  const totalMinutes = endTotalMinutes - startTotalMinutes;
+  const totalHours = totalMinutes / 60;
+
+  const totalCost = totalHours * pricePerHour;
 
   const result = await Booking.findByIdAndUpdate(
     { _id: bookingId },
-    { endTime },
+    { endTime, totalCost },
     { new: true },
   )
     .populate('user')
