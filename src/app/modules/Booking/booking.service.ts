@@ -1,6 +1,7 @@
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
 import AppError from '../../errors/AppError';
+import { CAR_STATUS } from '../Car/car.constant';
 import { Car } from '../Car/car.model';
 import { User } from '../User/user.model';
 import { TUserBooking } from './booking.interface';
@@ -18,11 +19,19 @@ const createBooking = async (payload: TUserBooking, user: JwtPayload) => {
 
   if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
 
+  const updatedCar = await Car.findByIdAndUpdate(
+    isCarExist._id,
+    {
+      status: CAR_STATUS.unavailable,
+    },
+    { new: true },
+  );
+
   const booking = {
     date,
     startTime,
     user: isUserExist,
-    car: isCarExist,
+    car: updatedCar,
   };
 
   const result = await Booking.create(booking);
