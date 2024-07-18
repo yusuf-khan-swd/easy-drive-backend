@@ -34,7 +34,24 @@ This is a car rental management backend server built with Express.js, Mongoose, 
    npm run dev
    ```
 
-### Application Routes:
+<!-- TODO: Add features, technology see thrift store readme file  -->
+
+### Features
+
+-
+
+### Technology
+
+- bcrypt
+- cors
+- dotenv
+- express
+- status
+- jsonwebtoken
+- mongoose
+- zod
+
+## Application Routes:
 
 ### Auth
 
