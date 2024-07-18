@@ -1,19 +1,19 @@
-# RapidCommerce Product Management Server
+# EasyDrive Backend
 
-This is an e-commerce product management backend server built with Express.js, Mongoose, and Zod for validation.
+This is a car rental management backend server built with Express.js, Mongoose, and Zod for validation.
 
 ## `Useful Links`
 
-**1. [Github Server Side Repository](https://github.com/yusuf-khan-swd/rapid-commerce-server)** \
-**2. [Live Server](https://rapidcommerce.vercel.app)**
+**1. [Github Server Side Repository](https://github.com/yusuf-khan-swd/easy-drive-backend)** \
+**2. [Live Server](https://easydrive-backend.vercel.app)**
 
 ## How to Setup Project Locally
 
 1. **First step** => Clone the project
 
    ```sh
-   git clone https://github.com/yusuf-khan-swd/rapid-commerce-server.git
-   cd rapid-commerce-server
+   git clone https://github.com/yusuf-khan-swd/easy-drive-backend.git
+   cd easy-drive-backend
    ```
 
 2. **Second step** => Install all the packages using
@@ -22,10 +22,10 @@ This is an e-commerce product management backend server built with Express.js, M
    npm install
    ```
 
-3. **Third step** => Add environment variables according to the config file into your `.env` file
+3. **Third step** => Add environment variables according to the config file into your `.env` file. e.g:
 
    ```env
-   DB_URL=your_mongodb_connection_string
+   DATABASE_URL=your_mongodb_connection_string
    ```
 
 4. **Fourth and final step** => Run your code by using
@@ -34,28 +34,23 @@ This is an e-commerce product management backend server built with Express.js, M
    npm run dev
    ```
 
-That Do Not Have Booking
-User_Access_Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqb2huZG9lNUBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzIxMjg2MzA4LCJleHAiOjE3MjM4NzgzMDh9.MtaysZC0xME1tzSvKTCnZ4Z4KlfvBqFKJZas0HkDof4
-
-User_Access_Token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqb2huZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjEyMTg0ODcsImV4cCI6MTcyMzgxMDQ4N30.AvW9ISFmGRp0bHE1QwDkxiGlXsqSsZqIenlxJueZWDo
-s
-Admin_Access_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRW1haWwiOiJqb2huQGFkbWluLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMTIxODcwMiwiZXhwIjoxNzIzODEwNzAyfQ.HI8-GcyUQdGR_w6aYHgUguqhvEeqJmahNYc7YcKGYeo
-
 ### Application Routes:
 
-### Category
+### Auth
 
-- api/v1/categories/create-category (POST)
-- api/v1/categories (GET)
-- api/v1/categories/bc4beb7e-8756-41d8-92ae-9c36d13b5540 (Single GET) Include an id that is saved in your database
-- api/v1/categories/bc4beb7e-8756-41d8-92ae-9c36d13b5540 (PATCH)
-- api/v1/categories/7dd3b045-8fc4-43ee-8dbf-b315de27ba92 (DELETE) Include an id that is saved in your database
+- api/auth/signup (POST)
+- api/auth/login (POST)
 
-### Services
+### Car
 
-- api/v1/services/create-book (POST)
-- api/v1/services (GET)
-- api/v1/services/bc4beb7e-8756-41d8-92ae-9c36d13b5540/category (GET)
-- api/v1/services/45e5d21d-e115-4a55-a3ac-a4da01e2b25c (GET)
-- api/v1/services/45e5d21d-e115-4a55-a3ac-a4da01e2b25c (PATCH)
-- api/v1/services/1be009bb-911e-4763-805b-84f6788ade4f (DELETE)
+- api/cars (POST)
+- api/cars (GET)
+- api/cars/6697779f1b96cacd04bdb078 (Single GET)
+- api/cars/6697779f1b96cacd04bdb078 (PATCH)
+- api/cars/6697779f1b96cacd04bdb078 (DELETE)
+
+### Bookings
+
+- api/bookings (POST)
+- api/bookings (GET)
+- api/bookings/my-bookings (GET)
