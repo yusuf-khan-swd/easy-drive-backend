@@ -42,14 +42,15 @@ const getAllBooking = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const myBooking = async (id: string) => {
-  const isBookingExists = await Booking.findById(id);
+const myBooking = async (user: JwtPayload) => {
+  const { userEmail } = user;
 
-  if (!isBookingExists) {
-    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
-  }
+  const isUserExist = await User.findOne({ email: userEmail });
 
-  const result = await Booking.findByIdAndUpdate(id, { isDeleted: true });
+  if (!isUserExist)
+    throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
+
+  const result = await Booking.find({ user: isUserExist._id });
 
   return result;
 };
