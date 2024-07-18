@@ -10,9 +10,9 @@ const createBooking = catchAsync(async (req, res) => {
   const result = await BookingService.createBooking(data, user);
 
   sendResponse(res, {
-    statusCode: httpStatus.CREATED,
+    statusCode: httpStatus.OK,
     success: true,
-    message: 'Booking Created Successfully',
+    message: 'Car booked successfully',
     data: result,
   });
 });
