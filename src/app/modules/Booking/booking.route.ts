@@ -14,7 +14,7 @@ router.post(
   BookingController.createBooking,
 );
 
-router.get('/', BookingController.getAllBookings);
+router.get('/', auth(USER_ROLE.admin), BookingController.getAllBookings);
 
 router.get('/my-bookings', BookingController.myBooking);
 
