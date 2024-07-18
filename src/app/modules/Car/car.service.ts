@@ -2,6 +2,7 @@ import httpStatus from 'http-status';
 import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../errors/AppError';
 import { Booking } from '../Booking/booking.model';
+import { CAR_STATUS } from './car.constant';
 import { TCar, TReturnCar } from './car.interface';
 import { Car } from './car.model';
 
@@ -69,6 +70,8 @@ const returnCar = async (payload: TReturnCar) => {
   const isCarExist = await Car.findById(isBookingExists.car);
 
   if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
+
+  await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
 
   const result = await Booking.findByIdAndUpdate(
     { _id: bookingId },
