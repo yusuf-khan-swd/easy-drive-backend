@@ -16,6 +16,6 @@ router.post(
 
 router.get('/', auth(USER_ROLE.admin), BookingController.getAllBookings);
 
-router.get('/my-bookings', BookingController.myBooking);
+router.get('/my-bookings', auth(USER_ROLE.user), BookingController.myBooking);
 
 export const BookingRoutes = router;
