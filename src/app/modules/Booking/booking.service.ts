@@ -1,6 +1,5 @@
 import httpStatus from 'http-status';
 import { JwtPayload } from 'jsonwebtoken';
-import QueryBuilder from '../../builder/QueryBuilder';
 import AppError from '../../errors/AppError';
 import { Car } from '../Car/car.model';
 import { User } from '../User/user.model';
@@ -31,13 +30,15 @@ const createBooking = async (payload: TUserBooking, user: JwtPayload) => {
 };
 
 const getAllBooking = async (query: Record<string, unknown>) => {
-  const bookingQuery = new QueryBuilder(Booking.find(), query)
-    .filter()
-    .sort()
-    .paginate()
-    .fields();
+  const { carId, date } = query;
 
-  const result = await bookingQuery.modelQuery;
+  if (!carId || !date)
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'Please Provide carId and date in parameter',
+    );
+
+  const result = await Booking.find({ car: carId, date: date });
   return result;
 };
 
