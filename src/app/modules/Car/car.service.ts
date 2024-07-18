@@ -69,10 +69,10 @@ const returnCar = async (payload: TReturnCar) => {
   const result = await Booking.findByIdAndUpdate(
     { _id: bookingId },
     { endTime },
-    {
-      new: true,
-    },
-  );
+    { new: true },
+  )
+    .populate('user')
+    .populate('car');
 
   return result;
 };
