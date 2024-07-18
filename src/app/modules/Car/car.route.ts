@@ -20,6 +20,7 @@ router.get('/:id', CarController.getSingleCar);
 
 router.put(
   '/:id',
+  auth(USER_ROLE.admin),
   validateRequest(CarValidation.updateCarValidationSchema),
   CarController.updateCar,
 );
