@@ -8,7 +8,9 @@ import catchAsync from '../utils/catchAsync';
 
 const auth = (...requiredRoles: TUserRole[]) => {
   return catchAsync(async (req, res, next) => {
-    const token = req.headers.authorization;
+    let token = req.headers.authorization;
+
+    token = token && token.split(' ')[1];
 
     if (!token)
       throw new AppError(
