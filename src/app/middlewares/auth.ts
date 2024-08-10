@@ -13,10 +13,11 @@ const auth = (...requiredRoles: TUserRole[]) => {
     token = token && token.split(' ')[1];
 
     if (!token)
-      throw new AppError(
-        httpStatus.UNAUTHORIZED,
-        'You have no access to this route',
-      );
+      return res.status(httpStatus.UNAUTHORIZED).send({
+        success: false,
+        statusCode: 401,
+        message: 'You have no access to this route',
+      });
 
     const decoded = jwt.verify(
       token,
