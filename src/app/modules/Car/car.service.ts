@@ -13,7 +13,7 @@ const createCar = async (payload: TCar) => {
 };
 
 const getAllCar = async (query: Record<string, unknown>) => {
-  const carQuery = new QueryBuilder(Car.find(), query)
+  const carQuery = new QueryBuilder(Car.find({ isDeleted: false }), query)
     .filter()
     .sort()
     .paginate()
