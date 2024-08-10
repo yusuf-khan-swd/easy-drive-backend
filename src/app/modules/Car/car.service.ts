@@ -54,7 +54,11 @@ const deleteCar = async (id: string) => {
     throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
   }
 
-  const result = await Car.findByIdAndUpdate(id, { isDeleted: true });
+  const result = await Car.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
 
   return result;
 };
