@@ -61,7 +61,9 @@ const myBooking = async (user: JwtPayload) => {
   if (!isUserExist)
     throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
 
-  const result = await Booking.find({ user: isUserExist._id });
+  const result = await Booking.find({ user: isUserExist._id })
+    .populate('user')
+    .populate('car');
 
   return result;
 };
