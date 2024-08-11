@@ -47,7 +47,9 @@ const getAllBooking = async (query: Record<string, unknown>) => {
       'Please Provide carId and date in parameter',
     );
 
-  const result = await Booking.find({ car: carId, date: date });
+  const result = await Booking.find({ car: carId, date: date })
+    .populate('user')
+    .populate('car');
   return result;
 };
 
