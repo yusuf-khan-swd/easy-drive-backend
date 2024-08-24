@@ -1,6 +1,6 @@
 # Easy Drive
 
-Welcome to **Easy Drive**, a comprehensive car rental service application. This README provides all the necessary information to set up, run, and use the application effectively.
+Welcome to **Easy Drive Backend**, a comprehensive car rental service application backend. This README provides all the necessary information to set up, run, and use the application effectively.
 
 This is a car rental management backend server built with Express.js, Mongoose, and Zod for validation.
 
