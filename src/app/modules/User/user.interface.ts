@@ -7,8 +7,8 @@ export interface TUser {
   email: string;
   role: 'user' | 'admin';
   password: string;
-  phone: string;
-  address: string;
+  phone?: string;
+  address?: string;
 }
 
 export interface UserModel extends Model<TUser> {
