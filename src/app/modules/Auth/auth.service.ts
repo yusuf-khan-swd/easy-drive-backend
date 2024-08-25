@@ -1,13 +1,15 @@
 import httpStatus from 'http-status';
 import config from '../../config';
 import AppError from '../../errors/AppError';
+import { USER_ROLE } from '../User/user.constant';
 import { TUser } from '../User/user.interface';
 import { User } from '../User/user.model';
 import { TLoginUser } from './auth.interface';
 import { createToken } from './auth.utils';
 
 const signUp = async (payload: TUser) => {
-  const result = await User.create(payload);
+  const data = { ...payload, role: USER_ROLE.user };
+  const result = await User.create(data);
   return result;
 };
 
