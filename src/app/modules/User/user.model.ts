@@ -29,12 +29,10 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     phone: {
       type: String,
-      required: true,
       trim: true,
     },
     address: {
       type: String,
-      required: true,
       trim: true,
     },
   },
