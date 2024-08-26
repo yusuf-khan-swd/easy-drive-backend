@@ -8,6 +8,11 @@ import { TLoginUser } from './auth.interface';
 import { createToken } from './auth.utils';
 
 const signUp = async (payload: TUser) => {
+  const isUserExists = await User.isUserExistByEmail(payload.email);
+
+  if (isUserExists)
+    throw new AppError(httpStatus.BAD_REQUEST, 'User already Exist !');
+
   const data = { ...payload, role: USER_ROLE.user };
   const result = await User.create(data);
   return result;
