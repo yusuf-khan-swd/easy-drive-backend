@@ -8,10 +8,10 @@ import { TUserBooking } from './booking.interface';
 import { Booking } from './booking.model';
 
 const createBooking = async (payload: TUserBooking, user: JwtPayload) => {
-  const { userEmail } = user;
+  const { email } = user;
   const { carId, date, startTime } = payload;
 
-  const isUserExist = await User.findOne({ email: userEmail });
+  const isUserExist = await User.findOne({ email: email });
 
   if (!isUserExist) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
@@ -54,9 +54,9 @@ const getAllBooking = async (query: Record<string, unknown>) => {
 };
 
 const myBooking = async (user: JwtPayload) => {
-  const { userEmail } = user;
+  const { email } = user;
 
-  const isUserExist = await User.findOne({ email: userEmail });
+  const isUserExist = await User.findOne({ email: email });
 
   if (!isUserExist)
     throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
