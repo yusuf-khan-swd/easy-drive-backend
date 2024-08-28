@@ -7,7 +7,6 @@ export type TBooking = {
   startTime: string;
   endTime: string;
   totalCost: number;
-  isDeleted?: boolean;
 };
 
 export type TUserBooking = {
