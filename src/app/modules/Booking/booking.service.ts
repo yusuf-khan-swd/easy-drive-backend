@@ -53,6 +53,21 @@ const getAllBooking = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const getAllBookingByCar = async (query: Record<string, unknown>) => {
+  const { carId, date } = query;
+
+  if (!carId || !date)
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'Please Provide carId and date in parameter',
+    );
+
+  const result = await Booking.find({ car: carId, date: date })
+    .populate('user')
+    .populate('car');
+  return result;
+};
+
 const myBooking = async (user: JwtPayload) => {
   const { email } = user;
 
@@ -91,6 +106,7 @@ const deleteMyBooking = async (user: JwtPayload, id: string) => {
 export const BookingService = {
   createBooking,
   getAllBooking,
+  getAllBookingByCar,
   myBooking,
   deleteMyBooking,
 };

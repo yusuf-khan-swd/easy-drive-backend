@@ -37,6 +37,26 @@ const getAllBookings = catchAsync(async (req, res) => {
   }
 });
 
+const getAllBookingByCar = catchAsync(async (req, res) => {
+  const result = await BookingService.getAllBookingByCar(req.query);
+
+  if (result.length > 0) {
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Bookings retrieved successfully',
+      data: result,
+    });
+  } else {
+    sendResponse(res, {
+      statusCode: httpStatus.NOT_FOUND,
+      success: true,
+      message: 'No Data Found',
+      data: result,
+    });
+  }
+});
+
 const myBooking = catchAsync(async (req, res) => {
   const user = req.user;
   const result = await BookingService.myBooking(user);
@@ -76,4 +96,5 @@ export const BookingController = {
   getAllBookings,
   myBooking,
   deleteMyBooking,
+  getAllBookingByCar,
 };
