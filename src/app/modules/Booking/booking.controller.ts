@@ -37,8 +37,8 @@ const getAllBookings = catchAsync(async (req, res) => {
   }
 });
 
-const getAllBookingByCar = catchAsync(async (req, res) => {
-  const result = await BookingService.getAllBookingByCar(req.query);
+const getAllBookingByCarAndDate = catchAsync(async (req, res) => {
+  const result = await BookingService.getAllBookingByCarAndDate(req.query);
 
   if (result.length > 0) {
     sendResponse(res, {
@@ -96,5 +96,5 @@ export const BookingController = {
   getAllBookings,
   myBooking,
   deleteMyBooking,
-  getAllBookingByCar,
+  getAllBookingByCarAndDate,
 };

@@ -56,7 +56,7 @@ const getAllBooking = async (query: Record<string, unknown>) => {
   // return result;
 };
 
-const getAllBookingByCar = async (query: Record<string, unknown>) => {
+const getAllBookingByCarAndDate = async (query: Record<string, unknown>) => {
   const { carId, date } = query;
 
   if (!carId || !date)
@@ -109,7 +109,7 @@ const deleteMyBooking = async (user: JwtPayload, id: string) => {
 export const BookingService = {
   createBooking,
   getAllBooking,
-  getAllBookingByCar,
+  getAllBookingByCarAndDate,
   myBooking,
   deleteMyBooking,
 };

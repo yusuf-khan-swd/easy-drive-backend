@@ -15,7 +15,11 @@ router.post(
 );
 
 router.get('/', auth(USER_ROLE.admin), BookingController.getAllBookings);
-router.get('/car', auth(USER_ROLE.admin), BookingController.getAllBookingByCar);
+router.get(
+  '/car-date',
+  auth(USER_ROLE.admin),
+  BookingController.getAllBookingByCarAndDate,
+);
 
 router.get('/my-bookings', auth(USER_ROLE.user), BookingController.myBooking);
 router.delete(
