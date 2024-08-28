@@ -68,8 +68,33 @@ const myBooking = async (user: JwtPayload) => {
   return result;
 };
 
+const deleteMyBooking = async (user: JwtPayload, id: string) => {
+  const { email } = user;
+
+  const isUserExist = await User.findOne({ email: email });
+
+  if (!isUserExist)
+    throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
+
+  const booking: any = await Booking.findById(id).populate('user');
+
+  const bookingUserEmail = booking?.user?.email as string;
+
+  if (bookingUserEmail !== email)
+    throw new AppError(httpStatus.FORBIDDEN, 'Unauthorized Booking Delete.');
+
+  const result = await Booking.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
+
+  return result;
+};
+
 export const BookingService = {
   createBooking,
   getAllBooking,
   myBooking,
+  deleteMyBooking,
 };
