@@ -57,7 +57,7 @@ const getAllBooking = async (query: Record<string, unknown>) => {
 };
 
 const getSingleBooking = async (id: string) => {
-  const result = await Booking.findById(id);
+  const result = await Booking.findById(id).populate('user').populate('car');
 
   if (!result) {
     throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
