@@ -18,13 +18,13 @@ router.get('/my-bookings', auth(USER_ROLE.user), BookingController.myBooking);
 
 router.get('/', auth(USER_ROLE.admin), BookingController.getAllBookings);
 
-router.get('/:id', auth(USER_ROLE.admin), BookingController.getSingleBooking);
-
 router.get(
   '/car-date',
   auth(USER_ROLE.admin),
   BookingController.getAllBookingByCarAndDate,
 );
+
+router.get('/:id', auth(USER_ROLE.admin), BookingController.getSingleBooking);
 
 router.delete(
   '/my-bookings/:id',
