@@ -1,4 +1,7 @@
 
+Add status to booking. And it can user and admin update.
+pending, canceled, accepted 
+
 Local Url work perfectly
 DATABASE_URL=mongodb://localhost:27017/easy-drive
 
