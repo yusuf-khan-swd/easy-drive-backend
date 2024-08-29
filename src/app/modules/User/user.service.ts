@@ -28,7 +28,13 @@ const getAllUsers = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const deleteUser = async (id: string) => {
+  const result = await User.findByIdAndDelete(id);
+  return result;
+};
+
 export const UserService = {
   createAdmin,
   getAllUsers,
+  deleteUser,
 };

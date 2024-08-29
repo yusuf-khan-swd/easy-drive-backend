@@ -35,7 +35,21 @@ const getAllUsers = catchAsync(async (req, res) => {
     });
   }
 });
+
+const deleteUser = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await UserService.deleteUser(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User Deleted successfully',
+    data: result,
+  });
+});
+
 export const UserController = {
   createAdmin,
   getAllUsers,
+  deleteUser,
 };
