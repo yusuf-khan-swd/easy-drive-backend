@@ -106,10 +106,17 @@ const deleteMyBooking = async (user: JwtPayload, id: string) => {
   return result;
 };
 
+const deleteBooking = async (id: string) => {
+  const result = await Booking.findByIdAndDelete(id);
+
+  return result;
+};
+
 export const BookingService = {
   createBooking,
   getAllBooking,
   getAllBookingByCarAndDate,
   myBooking,
   deleteMyBooking,
+  deleteBooking,
 };
