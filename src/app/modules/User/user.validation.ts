@@ -10,6 +10,16 @@ const userValidationSchema = z.object({
   }),
 });
 
+const userUpdateValidationSchema = z.object({
+  body: z.object({
+    name: z.string({ required_error: 'Name is required' }),
+    email: z.string().email(),
+    phone: z.string().optional(),
+    address: z.string().optional(),
+  }),
+});
+
 export const UserValidation = {
   userValidationSchema,
+  userUpdateValidationSchema,
 };

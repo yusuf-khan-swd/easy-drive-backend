@@ -28,6 +28,20 @@ const getAllUsers = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const updateUser = async (id: string, payload: Partial<TUser>) => {
+  const isUserExists = await User.findById(id);
+
+  if (!isUserExists) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+  const result = await User.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+
+  return result;
+};
+
 const deleteUser = async (id: string) => {
   const result = await User.findByIdAndDelete(id);
   return result;
@@ -36,5 +50,6 @@ const deleteUser = async (id: string) => {
 export const UserService = {
   createAdmin,
   getAllUsers,
+  updateUser,
   deleteUser,
 };

@@ -14,6 +14,13 @@ router.post(
   UserController.createAdmin,
 );
 
+router.put(
+  '/:id',
+  auth(USER_ROLE.admin, USER_ROLE.user),
+  validateRequest(UserValidation.userUpdateValidationSchema),
+  UserController.updateUser,
+);
+
 router.get('/', auth(USER_ROLE.admin), UserController.getAllUsers);
 router.delete('/:id', auth(USER_ROLE.admin), UserController.deleteUser);
 
