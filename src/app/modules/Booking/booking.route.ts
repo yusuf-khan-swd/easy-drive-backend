@@ -14,7 +14,10 @@ router.post(
   BookingController.createBooking,
 );
 
+router.get('/my-bookings', auth(USER_ROLE.user), BookingController.myBooking);
+
 router.get('/', auth(USER_ROLE.admin), BookingController.getAllBookings);
+
 router.get('/:id', auth(USER_ROLE.admin), BookingController.getSingleBooking);
 
 router.get(
@@ -23,12 +26,12 @@ router.get(
   BookingController.getAllBookingByCarAndDate,
 );
 
-router.get('/my-bookings', auth(USER_ROLE.user), BookingController.myBooking);
 router.delete(
   '/my-bookings/:id',
   auth(USER_ROLE.user),
   BookingController.deleteMyBooking,
 );
+
 router.delete('/:id', auth(USER_ROLE.admin), BookingController.deleteBooking);
 
 export const BookingRoutes = router;
