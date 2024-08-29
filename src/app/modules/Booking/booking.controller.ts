@@ -57,6 +57,18 @@ const getAllBookingByCarAndDate = catchAsync(async (req, res) => {
   }
 });
 
+const getSingleBooking = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await BookingService.getSingleBooking(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Single Booking retrieved successfully',
+    data: result,
+  });
+});
+
 const myBooking = catchAsync(async (req, res) => {
   const user = req.user;
   const result = await BookingService.myBooking(user);
@@ -110,4 +122,5 @@ export const BookingController = {
   deleteMyBooking,
   getAllBookingByCarAndDate,
   deleteBooking,
+  getSingleBooking,
 };
