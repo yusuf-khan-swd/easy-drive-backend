@@ -1,4 +1,6 @@
 
+[fixed] - New Api is not working live server because of forgot to build
+
 5:06 PM 8/29/2024 - Deployed to vercel.
 
 Add status to booking. And it can user and admin update.
