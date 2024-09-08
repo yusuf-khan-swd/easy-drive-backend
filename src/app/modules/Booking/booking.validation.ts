@@ -12,6 +12,17 @@ const bookingValidationSchema = z.object({
   }),
 });
 
+const updateBookingValidationSchema = z.object({
+  body: z.object({
+    date: z.string().optional(),
+    startTime: z
+      .string()
+      .regex(/^([01]\d|2[0-3]):?([0-5]\d)$/, 'Invalid start time format')
+      .optional(),
+  }),
+});
+
 export const BookingValidation = {
   bookingValidationSchema,
+  updateBookingValidationSchema,
 };

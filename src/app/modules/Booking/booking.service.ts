@@ -5,7 +5,7 @@ import AppError from '../../errors/AppError';
 import { CAR_STATUS } from '../Car/car.constant';
 import { Car } from '../Car/car.model';
 import { User } from '../User/user.model';
-import { TUserBooking } from './booking.interface';
+import { TBooking, TUserBooking } from './booking.interface';
 import { Booking } from './booking.model';
 
 const createBooking = async (payload: TUserBooking, user: JwtPayload) => {
@@ -96,6 +96,20 @@ const myBookings = async (user: JwtPayload) => {
   return result;
 };
 
+const updateBooking = async (id: string, payload: Partial<TBooking>) => {
+  const isBookingExists = await Booking.findById(id);
+
+  if (!isBookingExists) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
+  }
+
+  const result = await Booking.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+
+  return result;
+};
+
 const deleteMyBooking = async (user: JwtPayload, id: string) => {
   const { email } = user;
 
@@ -156,4 +170,5 @@ export const BookingService = {
   deleteMyBooking,
   deleteBooking,
   getSingleBooking,
+  updateBooking,
 };

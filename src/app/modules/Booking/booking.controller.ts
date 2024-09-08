@@ -90,6 +90,18 @@ const myBookings = catchAsync(async (req, res) => {
   }
 });
 
+const updateBooking = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await BookingService.updateBooking(id, req.body);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Booking updated successfully',
+    data: result,
+  });
+});
+
 const deleteMyBooking = catchAsync(async (req, res) => {
   const user = req.user;
   const { id } = req.params;
@@ -123,4 +135,5 @@ export const BookingController = {
   getAllBookingByCarAndDate,
   deleteBooking,
   getSingleBooking,
+  updateBooking,
 };

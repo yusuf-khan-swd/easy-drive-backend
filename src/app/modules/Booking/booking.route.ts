@@ -37,6 +37,14 @@ router.delete(
   BookingController.deleteMyBooking,
 );
 
+// TODO: Can add updateUserBooking
+router.put(
+  '/:id',
+  auth(USER_ROLE.user, USER_ROLE.admin),
+  validateRequest(BookingValidation.updateBookingValidationSchema),
+  BookingController.updateBooking,
+);
+
 router.delete('/:id', auth(USER_ROLE.admin), BookingController.deleteBooking);
 
 export const BookingRoutes = router;
