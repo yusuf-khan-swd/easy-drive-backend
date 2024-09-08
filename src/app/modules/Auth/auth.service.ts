@@ -19,7 +19,7 @@ const signUp = async (payload: TUser) => {
 };
 
 const loginUser = async (payload: TLoginUser) => {
-  const user = await User.isUserExistByEmail(payload.email);
+  const user: any = await User.isUserExistByEmail(payload.email);
 
   if (!user) throw new AppError(httpStatus.NOT_FOUND, 'User not found !');
 
@@ -31,7 +31,11 @@ const loginUser = async (payload: TLoginUser) => {
   if (!isPasswordMatched)
     throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
 
-  const jwtPayload = { email: user?.email, role: user?.role };
+  const jwtPayload = {
+    email: user?.email,
+    role: user?.role,
+    userId: user?._id,
+  };
 
   const accessToken = createToken(
     jwtPayload,
