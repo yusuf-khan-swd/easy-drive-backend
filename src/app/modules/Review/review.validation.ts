@@ -2,17 +2,19 @@ import { z } from 'zod';
 
 const reviewValidationSchema = z.object({
   body: z.object({
-    rating: z.string({ required_error: 'Rating is required' }),
+    rating: z.number({ required_error: 'Rating is required' }),
     title: z.string({ required_error: 'Title is required' }),
     description: z.string({ required_error: 'Description is required' }),
+    car: z.string({ required_error: 'Car id is required' }),
   }),
 });
 
 const updateReviewValidationSchema = z.object({
   body: z.object({
-    rating: z.string().optional(),
+    rating: z.number().optional(),
     title: z.string().optional(),
     description: z.string().optional(),
+    car: z.string().optional(),
   }),
 });
 
