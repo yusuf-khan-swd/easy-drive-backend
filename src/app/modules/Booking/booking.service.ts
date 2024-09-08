@@ -112,9 +112,11 @@ const deleteMyBooking = async (user: JwtPayload, id: string) => {
 
   const isCarExist = await Car.findById(isBookingExists.car);
 
-  if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
-
-  await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
+  if (isCarExist) {
+    await Car.findByIdAndUpdate(isCarExist._id, {
+      status: CAR_STATUS.available,
+    });
+  }
 
   const bookingUserEmail = isBookingExists?.user?.email as string;
 
@@ -135,9 +137,11 @@ const deleteBooking = async (id: string) => {
 
   const isCarExist = await Car.findById(isBookingExists.car);
 
-  if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
-
-  await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
+  if (isCarExist) {
+    await Car.findByIdAndUpdate(isCarExist._id, {
+      status: CAR_STATUS.available,
+    });
+  }
 
   const result = await Booking.findByIdAndDelete(id);
 
