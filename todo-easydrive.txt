@@ -1,4 +1,10 @@
 
+-------------------- 3:58 PM 9/8/2024
+
+Integrate Payment Method successfully for booking
+
+-------------------- 
+
 [fixed] - New Api is not working live server because of forgot to build
 
 5:06 PM 8/29/2024 - Deployed to vercel.
