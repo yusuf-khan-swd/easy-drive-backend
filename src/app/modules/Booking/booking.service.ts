@@ -104,9 +104,19 @@ const deleteMyBooking = async (user: JwtPayload, id: string) => {
   if (!isUserExist)
     throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
 
-  const booking: any = await Booking.findById(id).populate('user');
+  const isBookingExists: any = await Booking.findById(id).populate('user');
 
-  const bookingUserEmail = booking?.user?.email as string;
+  if (!isBookingExists) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
+  }
+
+  const isCarExist = await Car.findById(isBookingExists.car);
+
+  if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
+
+  await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
+
+  const bookingUserEmail = isBookingExists?.user?.email as string;
 
   if (bookingUserEmail !== email)
     throw new AppError(httpStatus.FORBIDDEN, 'Unauthorized Booking Delete.');
