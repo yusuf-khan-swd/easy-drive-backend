@@ -23,6 +23,16 @@ const getAllReview = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const getCarReviews = async (id: string) => {
+  const result = await Review.find({ car: id }).populate('user');
+
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'Reviews not found');
+  }
+
+  return result;
+};
+
 const getSingleReview = async (id: string) => {
   const result = await Review.findById(id).populate('user').populate('car');
 
@@ -64,4 +74,5 @@ export const ReviewService = {
   deleteReview,
   getSingleReview,
   updateReview,
+  getCarReviews,
 };
