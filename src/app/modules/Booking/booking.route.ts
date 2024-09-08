@@ -24,7 +24,12 @@ router.get(
   BookingController.getAllBookingByCarAndDate,
 );
 
-router.get('/:id', auth(USER_ROLE.admin), BookingController.getSingleBooking);
+// TODO: Can add getUserSingleBooking
+router.get(
+  '/:id',
+  auth(USER_ROLE.user, USER_ROLE.admin),
+  BookingController.getSingleBooking,
+);
 
 router.delete(
   '/my-bookings/:id',
