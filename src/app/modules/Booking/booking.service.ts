@@ -81,7 +81,7 @@ const getAllBookingByCarAndDate = async (query: Record<string, unknown>) => {
   return result;
 };
 
-const myBooking = async (user: JwtPayload) => {
+const myBookings = async (user: JwtPayload) => {
   const { email } = user;
 
   const isUserExist = await User.findOne({ email: email });
@@ -152,7 +152,7 @@ export const BookingService = {
   createBooking,
   getAllBooking,
   getAllBookingByCarAndDate,
-  myBooking,
+  myBookings,
   deleteMyBooking,
   deleteBooking,
   getSingleBooking,

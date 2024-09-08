@@ -69,9 +69,9 @@ const getSingleBooking = catchAsync(async (req, res) => {
   });
 });
 
-const myBooking = catchAsync(async (req, res) => {
+const myBookings = catchAsync(async (req, res) => {
   const user = req.user;
-  const result = await BookingService.myBooking(user);
+  const result = await BookingService.myBookings(user);
 
   if (result.length > 0) {
     sendResponse(res, {
@@ -118,7 +118,7 @@ const deleteBooking = catchAsync(async (req, res) => {
 export const BookingController = {
   createBooking,
   getAllBookings,
-  myBooking,
+  myBookings,
   deleteMyBooking,
   getAllBookingByCarAndDate,
   deleteBooking,
