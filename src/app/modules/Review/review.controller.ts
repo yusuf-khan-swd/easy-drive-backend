@@ -5,6 +5,11 @@ import { ReviewService } from './review.service';
 
 const createReview = catchAsync(async (req, res) => {
   const data = req.body;
+  const userId = req.user?.userId;
+
+  data.rating = Number(data?.rating);
+  data.user = userId;
+
   const result = await ReviewService.createReview(data);
 
   sendResponse(res, {
