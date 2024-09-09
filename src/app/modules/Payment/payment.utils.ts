@@ -12,7 +12,7 @@ export const initiatePayment = async (paymentData: Record<string, unknown>) => {
       success_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&status=success`,
       fail_url: `http://localhost:5000/api/payment/confirmation?status=failed`,
       cancel_url: 'http://localhost:5173/',
-      amount: paymentData.totalPrice,
+      amount: paymentData.totalCost,
       currency: 'BDT',
       desc: 'Merchant Registration Payment',
       cus_name: paymentData.customerName,
