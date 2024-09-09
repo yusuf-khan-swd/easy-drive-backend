@@ -5,7 +5,6 @@ interface IOrder extends Document {
   car: Types.ObjectId;
   booking: Types.ObjectId;
   totalCost: number;
-  status: string;
   paymentStatus: string;
   transactionId: string;
 }
@@ -30,11 +29,6 @@ const OrderSchema: Schema = new Schema(
     totalCost: {
       type: Number,
       required: true,
-    },
-    status: {
-      type: String,
-      enum: ['Pending', 'Paid', 'Completed', 'Cancelled'],
-      default: 'Pending',
     },
     paymentStatus: {
       type: String,
