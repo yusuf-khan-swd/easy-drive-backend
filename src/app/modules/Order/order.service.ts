@@ -1,36 +1,37 @@
-import { initiatePayment } from '../Payment/payment.utils';
-import Order from './order.model';
-
-const createOrder = async (orderData: any) => {
-  const { user, car, totalCost } = orderData;
+const createOrder = async (payload: any) => {
+  const { user, car, booking, totalCost } = payload;
 
   const transactionId = `TXN-${Date.now()}`;
 
-  const order = new Order({
+  const orderData = {
     user,
     car,
+    booking,
     totalCost,
     status: 'Pending',
     paymentStatus: 'Pending',
     transactionId,
-  });
-
-  await order.save();
-
-  const paymentData = {
-    transactionId,
-    totalCost,
-    customerName: user?.name,
-    customerEmail: user?.email,
-    customerPhone: user?.phone,
-    customerAddress: user?.address,
   };
+  console.log(orderData);
 
-  // Payment
-  const paymentSession = await initiatePayment(paymentData);
-  console.log({ paymentSession });
+  // const order = new Order(orderData);
 
-  return paymentSession;
+  // await order.save();
+
+  // const paymentData = {
+  //   transactionId,
+  //   totalCost,
+  //   customerName: user?.name,
+  //   customerEmail: user?.email,
+  //   customerPhone: user?.phone,
+  //   customerAddress: user?.address,
+  // };
+
+  // // Payment
+  // const paymentSession = await initiatePayment(paymentData);
+  // console.log({ paymentSession });
+
+  // return paymentSession;
 };
 
 export const orderService = {
