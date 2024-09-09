@@ -3,10 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment Confirmation Page</title>
+    <title>Payment Status</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+      }
+      h1.success {
+        color: #4caf50; /* Green for success */
+      }
+      h1.failure {
+        color: #ff0000; /* Red for failure */
+      }
+
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        background-color: #008cba;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+      a:hover {
+        background-color: #005f73;
+      }
+    </style>
   </head>
   <body>
-    <h1>{{message}}</h1>
+    <h1 class="{{statusClass}}">{{message}}</h1>
     <a href="http://localhost:3000/dashboard">Back to dashboard</a>
   </body>
 </html>

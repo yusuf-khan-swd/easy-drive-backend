@@ -8,14 +8,17 @@ const confirmation = async (transactionId: string) => {
   // console.log(verifyResponse);
 
   let message = '';
+  let statusClass = '';
   if (verifyResponse && verifyResponse.pay_status === 'Successful') {
     await orderModel.findOneAndUpdate(
       { transactionId },
       { paymentStatus: 'Paid' },
     );
     message = 'Successfully Paid!';
+    statusClass = 'success';
   } else {
     message = 'Payment Failed!';
+    statusClass = 'failure';
   }
 
   // const filePath = join(__dirname, '../../../view/confirmation.html');
@@ -30,6 +33,7 @@ const confirmation = async (transactionId: string) => {
   let template = readFileSync(filePath, 'utf-8');
 
   template = template.replace('{{message}}', message);
+  template = template.replace('{{statusClass}}', statusClass);
 
   return template;
   // return `<h1>Payment ${status}</h1>`;
