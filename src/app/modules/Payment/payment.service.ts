@@ -1,5 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { PAYMENT_STATUS } from '../../constants/global';
+import { Booking } from '../Booking/booking.model';
 import orderModel from '../Order/order.model';
 import { verifyPayment } from './payment.utils';
 
@@ -13,15 +15,30 @@ const confirmation = async (transactionId: string, amount = '0') => {
   const date = new Date().toLocaleDateString();
 
   if (verifyResponse && verifyResponse.pay_status === 'Successful') {
-    await orderModel.findOneAndUpdate(
+    const order = await orderModel.findOneAndUpdate(
       { transactionId },
-      { paymentStatus: 'Paid' },
+      { paymentStatus: PAYMENT_STATUS.Paid },
+      { new: true },
     );
+
+    await Booking.findByIdAndUpdate(order?.booking, {
+      paymentStatus: PAYMENT_STATUS.Paid,
+    });
 
     message = 'Successfully Paid!';
     statusClass = 'success';
     icon = '&#10004;'; // Checkmark icon
   } else {
+    const order = await orderModel.findOneAndUpdate(
+      { transactionId },
+      { paymentStatus: PAYMENT_STATUS.Failed },
+      { new: true },
+    );
+
+    await Booking.findByIdAndUpdate(order?.booking, {
+      paymentStatus: PAYMENT_STATUS.Failed,
+    });
+
     message = 'Payment Failed!';
     statusClass = 'failure';
     icon = '&#10060;'; // Cross icon
