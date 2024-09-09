@@ -1,6 +1,7 @@
 
-
 -------------------- 9:38 AM 9/9/2024
+
+Done - Payment Confirmation Html design with heading, icon, back to dashboard link 
 
 Done - Payment Integration
 
