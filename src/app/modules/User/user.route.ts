@@ -16,7 +16,7 @@ router.post(
 
 router.put(
   '/:id',
-  auth(USER_ROLE.admin, USER_ROLE.user),
+  auth(USER_ROLE.admin),
   validateRequest(UserValidation.userUpdateValidationSchema),
   UserController.updateUser,
 );
