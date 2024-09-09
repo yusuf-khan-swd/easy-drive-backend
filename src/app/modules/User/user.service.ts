@@ -28,6 +28,16 @@ const getAllUsers = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const getSingleUser = async (id: string) => {
+  const result = await User.findById(id);
+
+  if (!result) {
+    throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+  return result;
+};
+
 const updateUser = async (id: string, payload: Partial<TUser>) => {
   const isUserExists = await User.findById(id);
 
@@ -52,4 +62,5 @@ export const UserService = {
   getAllUsers,
   updateUser,
   deleteUser,
+  getSingleUser,
 };

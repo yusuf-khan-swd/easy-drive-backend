@@ -14,6 +14,8 @@ router.post(
   UserController.createAdmin,
 );
 
+router.get('/:id', auth(USER_ROLE.admin), UserController.getSingleUser);
+
 router.put(
   '/:id',
   auth(USER_ROLE.admin),
