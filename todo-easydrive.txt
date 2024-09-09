@@ -10,9 +10,9 @@ Done - Profile Module
 
 Done - Review Module
 
-Payment and Order Module are for payment integration
+Done - Payment and Order Module are for payment integration
 
-Integrate Payment Method successfully for booking
+Done - Integrate AmarPay Payment Method successfully for booking
 
 -------------------- 
 
