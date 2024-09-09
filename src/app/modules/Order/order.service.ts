@@ -1,7 +1,26 @@
+import httpStatus from 'http-status';
+import AppError from '../../errors/AppError';
+import { Booking } from '../Booking/booking.model';
+import { Car } from '../Car/car.model';
+import { initiatePayment } from '../Payment/payment.utils';
+import { User } from '../User/user.model';
 import Order from './order.model';
 
 const createOrder = async (payload: any) => {
   const { user, car, booking, totalCost } = payload;
+
+  const isUserExist = await User.findById(user);
+
+  if (!isUserExist) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
+
+  const isCarExist = await Car.findById(car);
+
+  if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
+
+  const isBookingExist = await Booking.findById(booking);
+
+  if (!isBookingExist)
+    throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
 
   const transactionId = `TXN-${Date.now()}`;
 
@@ -17,23 +36,22 @@ const createOrder = async (payload: any) => {
 
   const order = new Order(orderData);
 
-  const result = await order.save();
-  return result;
+  await order.save();
 
-  // const paymentData = {
-  //   transactionId,
-  //   totalCost,
-  //   customerName: user?.name,
-  //   customerEmail: user?.email,
-  //   customerPhone: user?.phone,
-  //   customerAddress: user?.address,
-  // };
+  const paymentData = {
+    transactionId,
+    totalCost,
+    customerName: isUserExist?.name,
+    customerEmail: isUserExist?.email,
+    customerPhone: isUserExist?.phone,
+    customerAddress: isUserExist?.address,
+  };
 
-  // // Payment
-  // const paymentSession = await initiatePayment(paymentData);
-  // console.log({ paymentSession });
+  // Payment
+  const paymentSession = await initiatePayment(paymentData);
+  console.log({ paymentSession });
 
-  // return paymentSession;
+  return paymentSession;
 };
 
 export const orderService = {
