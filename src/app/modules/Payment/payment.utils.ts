@@ -10,7 +10,7 @@ export const initiatePayment = async (paymentData: Record<string, unknown>) => {
       signature_key: process.env.SIGNATURE_KEY,
       tran_id: paymentData.transactionId,
       success_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
-      fail_url: `http://localhost:5000/api/payment/confirmation?status=failed`,
+      fail_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
       cancel_url: 'http://localhost:5173/',
       amount: paymentData.totalCost,
       currency: 'BDT',
