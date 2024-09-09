@@ -1,3 +1,5 @@
+import Order from './order.model';
+
 const createOrder = async (payload: any) => {
   const { user, car, booking, totalCost } = payload;
 
@@ -12,11 +14,11 @@ const createOrder = async (payload: any) => {
     paymentStatus: 'Pending',
     transactionId,
   };
-  console.log(orderData);
 
-  // const order = new Order(orderData);
+  const order = new Order(orderData);
 
-  // await order.save();
+  const result = await order.save();
+  return result;
 
   // const paymentData = {
   //   transactionId,
