@@ -4,7 +4,7 @@ interface IOrder extends Document {
   user: Types.ObjectId;
   car: Types.ObjectId;
   booking: Types.ObjectId;
-  totalPrice: number;
+  totalCost: number;
   status: string;
   paymentStatus: string;
   transactionId: string;
@@ -27,7 +27,7 @@ const OrderSchema: Schema = new Schema(
       ref: 'Booking',
       required: true,
     },
-    totalPrice: {
+    totalCost: {
       type: Number,
       required: true,
     },
