@@ -13,7 +13,7 @@ router.get(
   ProfileController.getUserProfile,
 );
 
-router.put(
+router.patch(
   '/:id',
   auth(USER_ROLE.user, USER_ROLE.admin),
   validateRequest(ProfileValidation.profileUpdateValidationSchema),
