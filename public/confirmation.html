@@ -16,7 +16,20 @@
       h1.failure {
         color: #ff0000; /* Red for failure */
       }
-
+      .icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+      .success-icon {
+        color: #4caf50;
+      }
+      .failure-icon {
+        color: #ff0000;
+      }
+      .details {
+        margin: 20px 0;
+        font-size: 1.2em;
+      }
       a {
         display: inline-block;
         padding: 10px 20px;
@@ -32,7 +45,13 @@
     </style>
   </head>
   <body>
+    <div class="icon {{statusClass}}-icon">{{icon}}</div>
     <h1 class="{{statusClass}}">{{message}}</h1>
-    <a href="http://localhost:3000/dashboard">Back to dashboard</a>
+    <div class="details">
+      <p>Transaction ID: {{transactionId}}</p>
+      <p>Amount: {{amount}} TK</p>
+      <p>Date: {{date}}</p>
+    </div>
+    <a href="http://localhost:3000/dashboard">Back to Dashboard</a>
   </body>
 </html>
