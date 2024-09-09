@@ -29,20 +29,16 @@ const bookingSchema = new Schema<TBooking>(
       type: Number,
       default: 0,
     },
+    // TODO: Admin can confirm booking User can Cancelled. User cannot cancel if admin confirm. Admin cannot confirm if user cancel
     // status: {
     //   type: String,
     //   enum: ['Pending', 'Confirmed', 'Cancelled'],
     //   default: 'Pending',
     // },
-    // paymentStatus: {
-    //   type: String,
-    //   enum: ['Pending', 'Paid', 'Failed'],
-    //   default: 'Pending',
-    // },
-    // transactionId: {
-    //   type: String,
-    //   required: true,
-    // },
+    paymentStatus: {
+      type: String,
+      enum: ['Pending', 'Paid', 'Failed'],
+    },
   },
   {
     timestamps: true,
