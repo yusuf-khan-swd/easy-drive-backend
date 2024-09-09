@@ -1,6 +1,8 @@
 
 -------------------- 3:58 PM 9/8/2024
 
+Done - Review Module
+
 Payment and Order Module are for payment integration
 
 Integrate Payment Method successfully for booking
