@@ -70,7 +70,7 @@ Ensure you have the following installed:
 ### Auth
 
 - api/auth/signup (POST)
-- api/auth/login (POST)
+- api/auth/signin (POST)
 
 ### Car
 
