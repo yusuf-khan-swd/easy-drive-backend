@@ -9,6 +9,9 @@ export const initiatePayment = async (paymentData: Record<string, unknown>) => {
       store_id: process.env.STORE_ID,
       signature_key: process.env.SIGNATURE_KEY,
       tran_id: paymentData.transactionId,
+
+      // TODO: Can redirect to frontend /payment page with transactionId and amount and from client /payment page can call verify transaction api
+
       success_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
       fail_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
       cancel_url: 'http://localhost:3000/',

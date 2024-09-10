@@ -8,4 +8,7 @@ const router = Router();
 
 router.post('/confirmation', PaymentController.confirmation);
 
+// TODO: Send post request from frontend to this route to verify payment
+// router.post('/verify-payment')
+
 export const paymentRoutes = router;
