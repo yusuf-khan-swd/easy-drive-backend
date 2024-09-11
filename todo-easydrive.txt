@@ -1,9 +1,13 @@
 
--------------------- 10:20 AM 9/10/2024
+-------------------- 11:26 AM 9/11/2024, we
 
 
 
--------------------- 9:38 AM 9/9/2024
+-------------------- 10:20 AM 9/10/2024, tu
+
+
+
+-------------------- 9:38 AM 9/9/2024, mo
 
 Done - Payment Confirmation Html design with heading, icon, back to dashboard link 
 
@@ -11,7 +15,8 @@ Done - Payment Integration
 
 Done - Profile Module
 
--------------------- 3:58 PM 9/8/2024
+
+-------------------- 3:58 PM 9/8/2024, su
 
 Done - Review Module
 
