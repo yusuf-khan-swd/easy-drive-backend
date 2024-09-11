@@ -17,6 +17,16 @@ const createAdmin = async (payload: TUser) => {
   return result;
 };
 
+const makeAdmin = async (id: string) => {
+  const isUserExists = await User.findById(id);
+
+  if (!isUserExists)
+    throw new AppError(httpStatus.BAD_REQUEST, 'User Does not Exist !');
+
+  const result = await User.findByIdAndUpdate(id, { role: USER_ROLE.admin });
+  return result;
+};
+
 const getAllUsers = async (query: Record<string, unknown>) => {
   const carQuery = new QueryBuilder(User.find(), query)
     .filter()
@@ -63,4 +73,5 @@ export const UserService = {
   updateUser,
   deleteUser,
   getSingleUser,
+  makeAdmin,
 };
