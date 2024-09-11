@@ -23,6 +23,20 @@ const getAllReview = async (query: Record<string, unknown>) => {
   return result;
 };
 
+const getMyReviews = async (id: string, query: Record<string, unknown>) => {
+  const reviewQuery = new QueryBuilder(
+    Review.find({ user: id }).populate('car'),
+    query,
+  )
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const result = await reviewQuery.modelQuery;
+  return result;
+};
+
 const getCarReviews = async (id: string) => {
   const result = await Review.find({ car: id }).populate('user');
 
@@ -75,4 +89,5 @@ export const ReviewService = {
   getSingleReview,
   updateReview,
   getCarReviews,
+  getMyReviews,
 };
