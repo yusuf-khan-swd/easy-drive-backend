@@ -20,6 +20,8 @@ router.get(
   ReviewController.getAllReviews,
 );
 
+router.get('/my-reviews', auth(USER_ROLE.user), ReviewController.getMyReviews);
+
 router.get('/car/:id', ReviewController.getCarReviews);
 
 router.get(
