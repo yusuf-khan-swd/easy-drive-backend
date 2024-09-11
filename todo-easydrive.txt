@@ -1,6 +1,8 @@
 
 -------------------- 11:26 AM 9/11/2024, we
 
+Done - Deploy to Vercel. After live server url added in payment utils. - 6:34 PM 9/11/2024
+
 Done - getMyReviews service, controller and route
 
 Done - Successfully Deploy to vercel after build - 1:26 PM 9/11/2024
