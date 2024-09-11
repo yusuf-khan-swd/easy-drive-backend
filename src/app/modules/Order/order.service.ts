@@ -1,10 +1,11 @@
 import httpStatus from 'http-status';
+import { JwtPayload } from 'jsonwebtoken';
 import AppError from '../../errors/AppError';
 import { Booking } from '../Booking/booking.model';
 import { Car } from '../Car/car.model';
 import { initiatePayment } from '../Payment/payment.utils';
 import { User } from '../User/user.model';
-import Order from './order.model';
+import { Order } from './order.model';
 
 const createOrder = async (payload: any) => {
   const { user, car, booking, totalCost } = payload;
@@ -54,6 +55,22 @@ const createOrder = async (payload: any) => {
   return paymentSession;
 };
 
+const myOrders = async (user: JwtPayload) => {
+  const { email } = user;
+
+  const isUserExist = await User.findOne({ email: email });
+
+  if (!isUserExist)
+    throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
+
+  const result = await Order.find({ user: isUserExist._id })
+    .populate('booking')
+    .populate('car');
+
+  return result;
+};
+
 export const orderService = {
   createOrder,
+  myOrders,
 };
