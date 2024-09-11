@@ -16,6 +16,18 @@ const createAdmin = catchAsync(async (req, res) => {
   });
 });
 
+const makeAdmin = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const result = await UserService.makeAdmin(id);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Making user an Admin successfully',
+    data: result,
+  });
+});
+
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await UserService.getAllUsers(req.query);
 
@@ -78,4 +90,5 @@ export const UserController = {
   updateUser,
   deleteUser,
   getSingleUser,
+  makeAdmin,
 };
