@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema, Types } from 'mongoose';
+import { Document, model, Schema, Types } from 'mongoose';
 
 interface IOrder extends Document {
   user: Types.ObjectId;
@@ -45,4 +45,4 @@ const OrderSchema: Schema = new Schema(
   },
 );
 
-export default mongoose.model<IOrder>('Order', OrderSchema);
+export const Order = model<IOrder>('Order', OrderSchema);
