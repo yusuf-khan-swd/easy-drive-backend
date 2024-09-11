@@ -17,13 +17,7 @@ const createCar = catchAsync(async (req, res) => {
 });
 
 const getAllCars = catchAsync(async (req, res) => {
-  console.log('getAllCars route hit');
-  const token = req.headers.authorization;
-  console.log({ token });
-  console.log({ user: req.user });
-
   const result = await CarService.getAllCar(req.query);
-  console.log('cars result ', result.length);
 
   if (result.length > 0) {
     sendResponse(res, {
