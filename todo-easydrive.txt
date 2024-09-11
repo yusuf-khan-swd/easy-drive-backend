@@ -1,6 +1,7 @@
 
 -------------------- 11:26 AM 9/11/2024, we
 
+Done - add makeAdmin service, controller and route
 
 
 -------------------- 10:20 AM 9/10/2024, tu
