@@ -1,13 +1,13 @@
-import { Request, Response } from "express";
-import { orderService } from "./order.service";
+import { Request, Response } from 'express';
+import { orderService } from './order.service';
 
-export const createOrderController = async (req: Request, res: Response) => {
+const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
     const newOrder = await orderService.createOrder(orderData);
     res.status(201).json({
       success: true,
-      message: "Order created successfully!",
+      message: 'Order created successfully!',
       data: newOrder,
     });
   } catch (error) {
@@ -17,4 +17,8 @@ export const createOrderController = async (req: Request, res: Response) => {
       error,
     });
   }
+};
+
+export const OrderController = {
+  createOrder,
 };
