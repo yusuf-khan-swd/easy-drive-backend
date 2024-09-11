@@ -10,7 +10,7 @@ const createReview = async (payload: TReview) => {
 };
 
 const getAllReview = async (query: Record<string, unknown>) => {
-  const carQuery = new QueryBuilder(
+  const reviewQuery = new QueryBuilder(
     Review.find().populate('user').populate('car'),
     query,
   )
@@ -19,7 +19,7 @@ const getAllReview = async (query: Record<string, unknown>) => {
     .paginate()
     .fields();
 
-  const result = await carQuery.modelQuery;
+  const result = await reviewQuery.modelQuery;
   return result;
 };
 
