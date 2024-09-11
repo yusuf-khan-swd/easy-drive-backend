@@ -16,6 +16,12 @@ router.post(
 
 router.get('/:id', auth(USER_ROLE.admin), UserController.getSingleUser);
 
+router.patch(
+  '/make-admin/:id',
+  auth(USER_ROLE.admin),
+  UserController.makeAdmin,
+);
+
 router.put(
   '/:id',
   auth(USER_ROLE.admin),
