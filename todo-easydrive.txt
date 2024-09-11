@@ -1,7 +1,9 @@
 
 -------------------- 11:26 AM 9/11/2024, we
 
-Done - Deploy to Vercel. After live server url added in payment utils. - 6:34 PM 9/11/2024
+[fixed] - Deploy vercel issue because of forgot to use mongodb atlas live url instead use local that's why there is internal server error - 6:48 PM 9/11/2024
+
+[Failed] - Deploy to Vercel. After live server url added in payment utils. - 6:34 PM 9/11/2024
 
 Done - getMyReviews service, controller and route
 
