@@ -2,17 +2,6 @@
 -------------------- 11:26 AM 9/11/2024, we
 
 
-for future - Price: $500/day - Price Per Hour - So need adjust car price
-Enterprise price - $67.79 Per Day, $69.69 Per Day
-nationalCar price - $ 73.40 / day, $ 80.94 / day
-kayak price - $877
-
-for future - confirm password 
-for future - admin can update car status
-
-update profile problem displaying previous data for admin need to see user having same problem
-
-
 [fixed] - Deploy vercel issue because of forgot to use mongodb atlas live url instead use local that's why there is internal server error - 6:48 PM 9/11/2024
 
 [Failed] - Deploy to Vercel. After live server url added in payment utils. - 6:34 PM 9/11/2024
