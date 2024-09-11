@@ -1,6 +1,8 @@
 
 -------------------- 11:26 AM 9/11/2024, we
 
+Done - Successfully Deploy to vercel after build - 1:26 PM 9/11/2024
+
 Done - myOrders for user service, controller and route
 
 Done - add makeAdmin service, controller and route
