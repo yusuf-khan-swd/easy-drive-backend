@@ -12,9 +12,9 @@ export const initiatePayment = async (paymentData: Record<string, unknown>) => {
 
       // TODO: Can redirect to frontend /payment page with transactionId and amount and from client /payment page can call verify transaction api
 
-      success_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
-      fail_url: `http://localhost:5000/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
-      cancel_url: 'http://localhost:3000/',
+      success_url: `httphttps://easydrive-backend.vercel.app/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
+      fail_url: `httphttps://easydrive-backend.vercel.app/api/payment/confirmation?transactionId=${paymentData.transactionId}&amount=${paymentData.totalCost}`,
+      cancel_url: 'https://easydrivego.vercel.app',
       amount: paymentData.totalCost,
       currency: 'BDT',
       desc: 'Merchant Registration Payment',
