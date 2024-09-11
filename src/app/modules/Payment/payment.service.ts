@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { PAYMENT_STATUS } from '../../constants/global';
 import { Booking } from '../Booking/booking.model';
-import orderModel from '../Order/order.model';
+import { Order } from '../Order/order.model';
 import { verifyPayment } from './payment.utils';
 
 const confirmation = async (transactionId: string, amount = '0') => {
@@ -15,7 +15,7 @@ const confirmation = async (transactionId: string, amount = '0') => {
   const date = new Date().toLocaleDateString();
 
   if (verifyResponse && verifyResponse.pay_status === 'Successful') {
-    const order = await orderModel.findOneAndUpdate(
+    const order = await Order.findOneAndUpdate(
       { transactionId },
       { paymentStatus: PAYMENT_STATUS.Paid },
       { new: true },
@@ -29,7 +29,7 @@ const confirmation = async (transactionId: string, amount = '0') => {
     statusClass = 'success';
     icon = '&#10004;'; // Checkmark icon
   } else {
-    const order = await orderModel.findOneAndUpdate(
+    const order = await Order.findOneAndUpdate(
       { transactionId },
       { paymentStatus: PAYMENT_STATUS.Failed },
       { new: true },
