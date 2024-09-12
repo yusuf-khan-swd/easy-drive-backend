@@ -38,7 +38,9 @@ const getMyReviews = async (id: string, query: Record<string, unknown>) => {
 };
 
 const getCarReviews = async (id: string) => {
-  const result = await Review.find({ car: id }).populate('user');
+  const result = await Review.find({ car: id })
+    .populate('user')
+    .sort('-createdAt');
 
   if (!result) {
     throw new AppError(httpStatus.NOT_FOUND, 'Reviews not found');
