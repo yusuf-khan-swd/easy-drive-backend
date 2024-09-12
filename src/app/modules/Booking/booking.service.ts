@@ -90,7 +90,6 @@ const myBookings = async (user: JwtPayload) => {
     throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
 
   const result = await Booking.find({ user: isUserExist._id })
-    .populate('user')
     .populate('car')
     .sort('-createdAt');
 
