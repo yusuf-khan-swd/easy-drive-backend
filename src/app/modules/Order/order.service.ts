@@ -65,7 +65,8 @@ const myOrders = async (user: JwtPayload) => {
 
   const result = await Order.find({ user: isUserExist._id })
     .populate('booking')
-    .populate('car');
+    .populate('car')
+    .sort('-createdAt');
 
   return result;
 };
