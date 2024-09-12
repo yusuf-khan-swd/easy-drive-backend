@@ -91,7 +91,8 @@ const myBookings = async (user: JwtPayload) => {
 
   const result = await Booking.find({ user: isUserExist._id })
     .populate('user')
-    .populate('car');
+    .populate('car')
+    .sort('-createdAt');
 
   return result;
 };
