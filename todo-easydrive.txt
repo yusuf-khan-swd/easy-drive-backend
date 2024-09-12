@@ -1,6 +1,11 @@
 
--------------------- 11:26 AM 9/11/2024, we
 
+-------------------- 10:12 AM 9/12/2024, th
+
+
+
+
+-------------------- 11:26 AM 9/11/2024, we
 
 [fixed] - Deploy vercel issue because of forgot to use mongodb atlas live url instead use local that's why there is internal server error - 6:48 PM 9/11/2024
 
