@@ -1,4 +1,7 @@
 
+-------------------- 12:22 PM 9/13/2024, fr
+
+for future - in payment use transaction
 
 -------------------- 10:12 AM 9/12/2024, th
 [Success] - Deploy to vercel - 9:43 PM 9/12/2024
