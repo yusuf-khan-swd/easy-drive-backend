@@ -52,7 +52,7 @@ Done - Integrate AmarPay Payment Method successfully for booking
 
 [fixed] - New Api is not working live server because of forgot to build
 
-5:06 PM 8/29/2024 - Deployed to vercel.
+[Failed] - Deployed to vercel - 5:06 PM 8/29/2024
 
 Add status to booking. And it can user and admin update.
 pending, canceled, accepted 
