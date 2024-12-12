@@ -40,6 +40,9 @@ const getAllCars = catchAsync(async (req, res) => {
 });
 
 const getSingleCar = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('token', token);
+
   const { id } = req.params;
   const result = await CarService.getSingleCars(id);
 
