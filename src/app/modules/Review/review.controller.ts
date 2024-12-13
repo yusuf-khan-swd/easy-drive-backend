@@ -4,6 +4,9 @@ import sendResponse from '../../utils/sendResponse';
 import { ReviewService } from './review.service';
 
 const createReview = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('Create review route token', token);
+
   const data = req.body;
   const userId = req.user?.userId;
   data.user = userId;
@@ -51,6 +54,9 @@ const getMyReviews = catchAsync(async (req, res) => {
 });
 
 const getCarReviews = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('reviews route token', token);
+
   const { id } = req.params;
   const result = await ReviewService.getCarReviews(id);
 
