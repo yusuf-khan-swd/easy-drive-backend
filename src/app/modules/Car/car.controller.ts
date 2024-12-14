@@ -17,9 +17,6 @@ const createCar = catchAsync(async (req, res) => {
 });
 
 const getAllCars = catchAsync(async (req, res) => {
-  const token = req.headers.authorization;
-  console.log('cars route token', token);
-
   const result = await CarService.getAllCar(req.query);
 
   if (result.length > 0) {
@@ -40,9 +37,6 @@ const getAllCars = catchAsync(async (req, res) => {
 });
 
 const getSingleCar = catchAsync(async (req, res) => {
-  const token = req.headers.authorization;
-  console.log('single car route token', token);
-
   const { id } = req.params;
   const result = await CarService.getSingleCars(id);
 
