@@ -39,6 +39,9 @@ const getAllReviews = catchAsync(async (req, res) => {
 });
 
 const getMyReviews = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('getMyReviews ', token);
+
   const { userId } = req.user;
   const result = await ReviewService.getMyReviews(userId, req.query);
 
@@ -63,6 +66,9 @@ const getCarReviews = catchAsync(async (req, res) => {
 });
 
 const getSingleReview = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('getSingleReview ', token);
+
   const { id } = req.params;
   const result = await ReviewService.getSingleReview(id);
 
