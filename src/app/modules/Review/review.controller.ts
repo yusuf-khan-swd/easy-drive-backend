@@ -75,6 +75,9 @@ const getSingleReview = catchAsync(async (req, res) => {
 });
 
 const updateReview = catchAsync(async (req, res) => {
+  const token = req.headers.authorization;
+  console.log('updateReview ', token);
+
   const { id } = req.params;
   const result = await ReviewService.updateReview(id, req.body);
 
