@@ -87,9 +87,6 @@ const updateReview = catchAsync(async (req, res) => {
 });
 
 const deleteReview = catchAsync(async (req, res) => {
-  const token = req.headers.authorization;
-  console.log('updateReview ', token);
-
   const { id } = req.params;
   const result = await ReviewService.deleteReview(id);
 
