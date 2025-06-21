@@ -1,4 +1,6 @@
 
+test github connection
+
 -------------------- 9:52 AM 10/1/2024, tu
 
 [fixed] - DB URL is not working. First cluster db url working like ThriftStore db but not second cluster 
