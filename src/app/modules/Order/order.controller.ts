@@ -8,6 +8,7 @@ const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
     const newOrder = await orderService.createOrder(orderData);
+
     res.status(201).json({
       success: true,
       message: 'Order created successfully!',
