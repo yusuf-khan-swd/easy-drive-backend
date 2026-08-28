@@ -50,8 +50,6 @@ const createOrder = async (payload: any) => {
 
   // Payment
   const paymentSession = await initiatePayment(paymentData);
-  console.log({ paymentSession });
-
   return paymentSession;
 };
 
