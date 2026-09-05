@@ -48,7 +48,6 @@ const createOrder = async (payload: any) => {
     customerAddress: isUserExist?.address,
   };
 
-  // Payment
   const paymentSession = await initiatePayment(paymentData);
   return paymentSession;
 };
