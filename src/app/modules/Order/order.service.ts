@@ -36,7 +36,6 @@ const createOrder = async (payload: any) => {
   };
 
   const order = new Order(orderData);
-
   await order.save();
 
   const paymentData = {
