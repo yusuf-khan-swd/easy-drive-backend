@@ -55,7 +55,6 @@ const myOrders = async (user: JwtPayload) => {
   const { email } = user;
 
   const isUserExist = await User.findOne({ email: email });
-
   if (!isUserExist)
     throw new AppError(httpStatus.NOT_FOUND, 'User does not exist');
 
