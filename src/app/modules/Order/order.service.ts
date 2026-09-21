@@ -14,7 +14,6 @@ const createOrder = async (payload: any) => {
   if (!isUserExist) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
   const isCarExist = await Car.findById(car);
-
   if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
 
   const isBookingExist = await Booking.findById(booking);
