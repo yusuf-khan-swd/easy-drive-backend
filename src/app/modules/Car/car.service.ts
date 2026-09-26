@@ -67,7 +67,6 @@ const returnCar = async (payload: TReturnCar) => {
   const { bookingId, endTime } = payload;
 
   const isBookingExists = await Booking.findById({ _id: bookingId });
-
   if (!isBookingExists) {
     throw new AppError(httpStatus.NOT_FOUND, 'Booking not found');
   }
