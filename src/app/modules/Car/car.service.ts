@@ -72,7 +72,6 @@ const returnCar = async (payload: TReturnCar) => {
   }
 
   const isCarExist = await Car.findById(isBookingExists.car);
-
   if (!isCarExist) throw new AppError(httpStatus.NOT_FOUND, 'Car not found');
 
   await Car.findByIdAndUpdate(isCarExist._id, { status: CAR_STATUS.available });
