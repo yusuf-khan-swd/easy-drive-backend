@@ -13,7 +13,6 @@ const createBooking = async (payload: TUserBooking, user: JwtPayload) => {
   const { carId, date, startTime } = payload;
 
   const isUserExist = await User.findOne({ email: email });
-
   if (!isUserExist) throw new AppError(httpStatus.NOT_FOUND, 'User not found');
 
   const isCarExist = await Car.findById(carId);
